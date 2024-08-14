@@ -1,8 +1,30 @@
+<!DOCTYPE html>
 <body style="background-color: black; color: white; margin: 0; padding: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
     <div style="text-align: center;">
-        <video width="640" height="480" controls autoplay loop>
-            <source src="scarlet_woman.webm" type="video/webm">
+        <video id="videoPlayer" width="640" height="480" controls autoplay loop muted>
+            Your browser does not support the video tag.
         </video>
         <p style="font-style: italic; font-size: 18px; margin-top: 20px;">return here in the future</p>
     </div>
+
+    <script>
+        // Lista de vídeos na pasta "videos"
+        const videos = [
+            "videos/scarlet_woman.webm",
+            "videos/abbey_of_thelema.mp4",
+            // Adicione mais vídeos conforme necessário
+        ];
+
+        // Função para selecionar um vídeo aleatório
+        function getRandomVideo() {
+            return videos[Math.floor(Math.random() * videos.length)];
+        }
+
+        // Configurar o vídeo aleatório
+        const videoPlayer = document.getElementById('videoPlayer');
+        const randomVideo = getRandomVideo();
+        videoPlayer.src = randomVideo;
+    </script>
 </body>
+</html>
+<!-- there are no secrets here today -->
