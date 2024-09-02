@@ -223,18 +223,20 @@
             });
         });
 
-        function resizeTree() {
-            const container = document.querySelector('.tree-container');
-            const tree = document.querySelector('.tree-of-life');
-            const scaleX = container.clientWidth / tree.clientWidth;
-            const scaleY = container.clientHeight / tree.clientHeight;
-            const scale = Math.min(scaleX, scaleY, 1); // Não aumenta além do tamanho original
-            tree.style.setProperty('--scale', scale);
-        }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            let musicStarted = false;
 
-        window.addEventListener('resize', resizeTree);
-        window.addEventListener('load', resizeTree);
+            document.body.addEventListener('click', () => {
+                if (!musicStarted) {
+                    backgroundMusic.play();
+                    musicStarted = true;
+                }
+            }, { once: true });  // Isso garante que o evento só será acionado uma vez
+        });
+
     </script>
 </body>
 </html>
+
 <!-- there are no secrets here today! -->
