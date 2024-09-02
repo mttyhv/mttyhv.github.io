@@ -10,7 +10,13 @@
             padding: 0;
             font-family: Arial, sans-serif;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000; /* Fundo preto para evitar bordas brancas */
         }
+
         .background {
             position: fixed;
             top: 0;
@@ -18,21 +24,25 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+            object-fit: cover;
         }
+
         .tree-container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 100%;
+            height: 100%;
         }
+
         .tree-of-life {
             position: relative;
             width: 420px;
             height: 780px;
-            margin: auto;
+            transform-origin: center;
+            transform: scale(var(--scale, 1));
         }
+
         .sphere {
             position: absolute;
             width: 80px;
@@ -46,6 +56,7 @@
             text-shadow: 1px 1px 2px black;
             z-index: 2;
         }
+
         .connection {
             position: absolute;
             background-color: rgba(255, 255, 255, 0.5);
@@ -75,7 +86,7 @@
         #binah .sphere-link { background-color: #000000; }
         #daath .sphere-link { background-color: #800080; }
         #chesed .sphere-link { background-color: #0000ff; }
-        #geburah .sphere-link { background-color: #ff0000; }
+        #gevurah .sphere-link { background-color: #ff0000; }
         #tiphereth .sphere-link { background-color: #ffff00; color: #000; }
         #netzach .sphere-link { background-color: #00ff00; }
         #hod .sphere-link { background-color: #ffa500; }
@@ -88,7 +99,7 @@
         #binah .sphere-link:hover { background-color: #1a1a1a; }
         #daath .sphere-link:hover { background-color: #9a009a; }
         #chesed .sphere-link:hover { background-color: #1a1aff; }
-        #geburah .sphere-link:hover { background-color: #ff1a1a; }
+        #gevurah .sphere-link:hover { background-color: #ff1a1a; }
         #tiphereth .sphere-link:hover { background-color: #ffff1a; }
         #netzach .sphere-link:hover { background-color: #1aff1a; }
         #hod .sphere-link:hover { background-color: #ffb31a; }
@@ -100,7 +111,7 @@
         #binah { top: 100px; left: 10px; background-color: #000000; }
         #daath { top: 200px; left: 170px; background-color: #800080; }
         #chesed { top: 300px; left: 330px; background-color: #0000ff; }
-        #geburah { top: 300px; left: 10px; background-color: #ff0000; }
+        #gevurah { top: 300px; left: 10px; background-color: #ff0000; }
         #tiphereth { top: 400px; left: 170px; background-color: #ffff00; color: #000; }
         #netzach { top: 500px; left: 330px; background-color: #00ff00; }
         #hod { top: 500px; left: 10px; background-color: #ffa500; }
@@ -111,7 +122,6 @@
 <body>
     <div class="background">
         <img src="files/galaxy.jpg" alt="Galaxy Background" style="width: 100%; height: 100%; object-fit: cover;">
-        <!-- Ou use o vídeo WebM como mostrado anteriormente -->
     </div>
     <div class="tree-container">
         <div class="tree-of-life">
@@ -120,7 +130,7 @@
             <div id="binah" class="sphere"><a href="binah.html" class="sphere-link">בִּינָה</a></div>
             <div id="daath" class="sphere"><a href="daath.html" class="sphere-link">דָּעַת</a></div>
             <div id="chesed" class="sphere"><a href="chesed.html" class="sphere-link">חֶסֶד</a></div>
-            <div id="geburah" class="sphere"><a href="geburah.html" class="sphere-link">גְּבוּרָה</a></div>
+            <div id="gevurah" class="sphere"><a href="gevurah.html" class="sphere-link">גְּבוּרָה</a></div>
             <div id="tiphereth" class="sphere"><a href="tiphereth.html" class="sphere-link">תִּפְאֶרֶת</a></div>
             <div id="netzach" class="sphere"><a href="netzach.html" class="sphere-link">נֶצַח</a></div>
             <div id="hod" class="sphere"><a href="hod.html" class="sphere-link">הוֹד</a></div>
@@ -135,7 +145,7 @@
     <audio id="binah-audio" src="files/binah.wav"></audio>
     <audio id="daath-audio" src="files/daath.wav"></audio>
     <audio id="chesed-audio" src="files/chesed.wav"></audio>
-    <audio id="geburah-audio" src="files/geburah.wav"></audio>
+    <audio id="gevurah-audio" src="files/gevurah.wav"></audio>
     <audio id="tiphereth-audio" src="files/tiphereth.wav"></audio>
     <audio id="netzach-audio" src="files/netzach.wav"></audio>
     <audio id="hod-audio" src="files/hod.wav"></audio>
@@ -174,12 +184,12 @@
         createConnection(kether, tiphereth);
         createConnection(chokmah, binah);
         createConnection(chokmah, chesed);
-        createConnection(binah, geburah);
-        createConnection(chesed, geburah);
+        createConnection(binah, gevurah);
+        createConnection(chesed, gevurah);
         createConnection(chesed, tiphereth);
-        createConnection(geburah, tiphereth);
+        createConnection(gevurah, tiphereth);
         createConnection(chesed, netzach);
-        createConnection(geburah, hod);
+        createConnection(gevurah, hod);
         createConnection(tiphereth, binah);
         createConnection(tiphereth, chokmah);
         createConnection(tiphereth, netzach);
@@ -212,6 +222,18 @@
                 }, 3333); // Ajuste este valor conforme necessário
             });
         });
+
+        function resizeTree() {
+            const container = document.querySelector('.tree-container');
+            const tree = document.querySelector('.tree-of-life');
+            const scaleX = container.clientWidth / tree.clientWidth;
+            const scaleY = container.clientHeight / tree.clientHeight;
+            const scale = Math.min(scaleX, scaleY, 1); // Não aumenta além do tamanho original
+            tree.style.setProperty('--scale', scale);
+        }
+
+        window.addEventListener('resize', resizeTree);
+        window.addEventListener('load', resizeTree);
     </script>
 </body>
 </html>
