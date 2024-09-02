@@ -32,8 +32,6 @@
             width: 420px;
             height: 780px;
             margin: auto;
-            top: 35%;
-            transform: translateY(-50%);
         }
         .sphere {
             position: absolute;
@@ -144,6 +142,10 @@
     <audio id="yesod-audio" src="files/yesod.wav"></audio>
     <audio id="malkuth-audio" src="files/malkuth.wav"></audio>
 
+    <audio id="backgroundMusic" src="files/destiny.opus" autoplay loop>
+        Your browser does not support the audio element.
+    </audio>    
+
     <script>
         function createConnection(start, end) {
             const connection = document.createElement('div');
@@ -207,7 +209,7 @@
                 // Redireciona após um pequeno atraso para permitir que o áudio comece a tocar
                 setTimeout(() => {
                     window.location.href = this.href;
-                }, 500); // Ajuste este valor conforme necessário
+                }, 3333); // Ajuste este valor conforme necessário
             });
         });
     </script>
