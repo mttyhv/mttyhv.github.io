@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="he, iw">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,11 +76,9 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* Estilos específicos para cada esfera */
         #kether .sphere-link { background-color: #ffffff; color: #000; }
         #chokmah .sphere-link { background-color: #808080; }
         #binah .sphere-link { background-color: #000000; }
-        #daath .sphere-link { background-color: #800080; }
         #chesed .sphere-link { background-color: #0000ff; }
         #gevurah .sphere-link { background-color: #ff0000; }
         #tiphereth .sphere-link { background-color: #ffff00; color: #000; }
@@ -88,11 +87,9 @@
         #yesod .sphere-link { background-color: #800080; }
         #malkuth .sphere-link { background-color: #8b4513; }
 
-        /* Estilos hover para cada esfera */
         #kether .sphere-link:hover { background-color: #e6e6e6; }
         #chokmah .sphere-link:hover { background-color: #6e6e6e; }
         #binah .sphere-link:hover { background-color: #1a1a1a; }
-        #daath .sphere-link:hover { background-color: #9a009a; }
         #chesed .sphere-link:hover { background-color: #1a1aff; }
         #gevurah .sphere-link:hover { background-color: #ff1a1a; }
         #tiphereth .sphere-link:hover { background-color: #ffff1a; }
@@ -104,7 +101,6 @@
         #kether { top: 0; left: 170px; background-color: #ffffff; color: #000; }
         #chokmah { top: 100px; left: 330px; background-color: #808080; }
         #binah { top: 100px; left: 10px; background-color: #000000; }
-        #daath { top: 200px; left: 170px; background-color: #800080; }
         #chesed { top: 300px; left: 330px; background-color: #0000ff; }
         #gevurah { top: 300px; left: 10px; background-color: #ff0000; }
         #tiphereth { top: 400px; left: 170px; background-color: #ffff00; color: #000; }
@@ -114,31 +110,29 @@
         #malkuth { top: 750px; left: 170px; background-color: #8b4513; }
     </style>
 </head>
+
 <body>
     <div class="background">
         <img src="files/galaxy.jpg" alt="Galaxy Background" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
     <div class="tree-container">
         <div class="tree-of-life">
-            <div id="kether" class="sphere"><a href="kether.html" class="sphere-link">כֶּתֶר‎</a></div>
-            <div id="chokmah" class="sphere"><a href="chokmah.html" class="sphere-link">חָכְמָה</a></div>
-            <div id="binah" class="sphere"><a href="binah.html" class="sphere-link">בִּינָה</a></div>
-            <div id="daath" class="sphere"><a href="daath.html" class="sphere-link">דָּעַת</a></div>
-            <div id="chesed" class="sphere"><a href="chesed.html" class="sphere-link">חֶסֶד</a></div>
-            <div id="gevurah" class="sphere"><a href="gevurah.html" class="sphere-link">גְּבוּרָה</a></div>
-            <div id="tiphereth" class="sphere"><a href="tiphereth.html" class="sphere-link">תִּפְאֶרֶת</a></div>
-            <div id="netzach" class="sphere"><a href="netzach.html" class="sphere-link">נֶצַח</a></div>
-            <div id="hod" class="sphere"><a href="hod.html" class="sphere-link">הוֹד</a></div>
-            <div id="yesod" class="sphere"><a href="yesod.html" class="sphere-link">יְסוֹד</a></div>
+            <div id="kether" class="sphere"><a href="kether.html" class="sphere-link">כתר</a></div>
+            <div id="chokmah" class="sphere"><a href="chokmah.html" class="sphere-link">חכמה</a></div>
+            <div id="binah" class="sphere"><a href="binah.html" class="sphere-link">בינה</a></div>
+            <div id="chesed" class="sphere"><a href="chesed.html" class="sphere-link">חסד</a></div>
+            <div id="gevurah" class="sphere"><a href="gevurah.html" class="sphere-link">גבורה</a></div>
+            <div id="tiphereth" class="sphere"><a href="tiphereth.html" class="sphere-link">תפארת</a></div>
+            <div id="netzach" class="sphere"><a href="netzach.html" class="sphere-link">נצח</a></div>
+            <div id="hod" class="sphere"><a href="hod.html" class="sphere-link">הוד</a></div>
+            <div id="yesod" class="sphere"><a href="yesod.html" class="sphere-link">יסוד</a></div>
             <div id="malkuth" class="sphere"><a href="malkuth.html" class="sphere-link">מַלְכוּת</a></div>
         </div>
     </div>
 
-    <!-- Elementos de áudio -->
     <audio id="kether-audio" src="files/kether.wav"></audio>
     <audio id="chokmah-audio" src="files/chokmah.wav"></audio>
     <audio id="binah-audio" src="files/binah.wav"></audio>
-    <audio id="daath-audio" src="files/daath.wav"></audio>
     <audio id="chesed-audio" src="files/chesed.wav"></audio>
     <audio id="gevurah-audio" src="files/gevurah.wav"></audio>
     <audio id="tiphereth-audio" src="files/tiphereth.wav"></audio>
@@ -173,7 +167,6 @@
             connection.style.transform = `rotate(${angle}deg)`;
         }
 
-        // Criar conexões
         createConnection(kether, chokmah);
         createConnection(kether, binah);
         createConnection(kether, tiphereth);
@@ -195,29 +188,6 @@
         createConnection(hod, yesod);
         createConnection(yesod, malkuth);
 
-        // Função para reproduzir áudio
-        function playAudio(sphereName) {
-            const audio = document.getElementById(`${sphereName}-audio`);
-            if (audio) {
-                audio.currentTime = 0;
-                audio.play();
-            }
-        }
-
-        // Adiciona eventos de clique às esferas
-        document.querySelectorAll('.sphere-link').forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault(); // Previne o redirecionamento imediato
-                const sphereName = this.parentElement.id;
-                playAudio(sphereName);
-                
-                // Redireciona após um pequeno atraso para permitir que o áudio comece a tocar
-                setTimeout(() => {
-                    window.location.href = this.href;
-                }, 3333); // Ajuste este valor conforme necessário
-            });
-        });
-
         document.addEventListener('DOMContentLoaded', (event) => {
             const backgroundMusic = document.getElementById('backgroundMusic');
             let musicStarted = false;
@@ -227,11 +197,12 @@
                     backgroundMusic.play();
                     musicStarted = true;
                 }
-            }, { once: true });  // Isso garante que o evento só será acionado uma vez
+            }, { once: true }); 
         });
 
     </script>
 </body>
+
 </html>
 
 <!-- there are no secrets here today! -->
