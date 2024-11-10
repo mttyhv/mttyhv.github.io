@@ -1,14 +1,13 @@
 <script>
-    function redirectToRandomLink() {
-        const links = [
-            'https://materialious.nadeko.net/watch/-frZkZ3nOSk',
-            'https://materialious.nadeko.net/watch/c6X9i-lPxvQ',
-        ];
-        const randomLink = links[Math.floor(Math.random() * links.length)];
-        const meta = document.createElement('meta');
-        meta.httpEquiv = "refresh";
-        meta.content = "0; URL='" + randomLink + "'";
-        document.head.appendChild(meta);
-    }
-    window.onload = redirectToRandomLink;
+	function redirectToRandomLink() {
+		const links = [
+			'https://inv.nadeko.net/watch?v=41qC3w3UUkU&backend_id=1',
+		];
+		const randomLink = links[Math.floor(Math.random() * links.length)];
+		const meta = document.createElement('meta');
+		meta.httpEquiv = "refresh";
+		meta.content = "0; URL='" + randomLink + "'";
+		document.head.appendChild(meta);
+	}
+	window.onload = redirectToRandomLink;
 </script>
