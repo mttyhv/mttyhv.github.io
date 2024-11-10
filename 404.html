@@ -1,24 +1,21 @@
 <script>
-	function redirectToBackend() {
+	function redirectToBackendThenRandomLink() {
 		const backendUrl = 'https://inv.nadeko.net/switchbackend?backend_id=1';
-		fetch(backendUrl, { method: 'GET' })
-			.then(() => {
-				redirectToRandomLink();
-			})
-			.catch(error => {
-				console.error('Erro ao mudar o backend:', error);
-				redirectToRandomLink();
-			});
-	}
-
-	function redirectToRandomLink() {
 		const links = [
 			'https://inv.nadeko.net/watch?v=41qC3w3UUkU',
-			// Add more links here if necessary
 		];
 		const randomLink = links[Math.floor(Math.random() * links.length)];
-		window.location.href = randomLink;
+
+		const metaBackend = document.createElement('meta');
+		metaBackend.httpEquiv = "refresh";
+		metaBackend.content = "0; URL='" + backendUrl + "'";
+		document.head.appendChild(metaBackend);
+
+		const metaRandom = document.createElement('meta');
+		metaRandom.httpEquiv = "refresh";
+		metaRandom.content = "1; URL='" + randomLink + "'";
+		document.head.appendChild(metaRandom);
 	}
 
-	window.onload = redirectToBackend;
+	window.onload = redirectToBackendThenRandomLink;
 </script>
