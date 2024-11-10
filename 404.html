@@ -1,13 +1,24 @@
 <script>
-	function redirectToRandomLink() {
-		const links = [
-			'https://inv.nadeko.net/watch?v=41qC3w3UUkU&backend_id=1',
-		];
-		const randomLink = links[Math.floor(Math.random() * links.length)];
-		const meta = document.createElement('meta');
-		meta.httpEquiv = "refresh";
-		meta.content = "0; URL='" + randomLink + "'";
-		document.head.appendChild(meta);
-	}
-	window.onload = redirectToRandomLink;
+    function redirectToBackend() {
+        const backendUrl = 'https://inv.nadeko.net/switchbackend?backend_id=1';
+        fetch(backendUrl, { method: 'GET' })
+            .then(() => {
+                redirectToRandomLink();
+            })
+            .catch(error => {
+                console.error('Erro ao mudar o backend:', error);
+                redirectToRandomLink();
+            });
+    }
+
+    function redirectToRandomLink() {
+        const links = [
+            'https://inv.nadeko.net/watch?v=41qC3w3UUkU',
+            // Add more links here if necessary
+        ];
+        const randomLink = links[Math.floor(Math.random() * links.length)];
+        window.location.href = randomLink;
+    }
+
+    window.onload = redirectToBackend;
 </script>
