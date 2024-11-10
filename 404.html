@@ -1,21 +1,13 @@
 <script>
-	function redirectToBackendThenRandomLink() {
-		const backendUrl = 'https://inv.nadeko.net/switchbackend?backend_id=1';
+	function redirectToRandomLink() {
 		const links = [
-			'https://inv.nadeko.net/watch?v=41qC3w3UUkU',
+			'https://materialious.nadeko.net/watch/41qC3w3UUkU',
 		];
 		const randomLink = links[Math.floor(Math.random() * links.length)];
-
-		const metaBackend = document.createElement('meta');
-		metaBackend.httpEquiv = "refresh";
-		metaBackend.content = "0; URL='" + backendUrl + "'";
-		document.head.appendChild(metaBackend);
-
-		const metaRandom = document.createElement('meta');
-		metaRandom.httpEquiv = "refresh";
-		metaRandom.content = "1; URL='" + randomLink + "'";
-		document.head.appendChild(metaRandom);
+		const meta = document.createElement('meta');
+		meta.httpEquiv = "refresh";
+		meta.content = "0; URL='" + randomLink + "'";
+		document.head.appendChild(meta);
 	}
-
-	window.onload = redirectToBackendThenRandomLink;
+	window.onload = redirectToRandomLink;
 </script>
